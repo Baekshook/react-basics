@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function PortfolioCard({ title, desc, image, index }) {
   // Portfolio에 적용된 props 적용
   const colors = [
@@ -23,10 +25,16 @@ function PortfolioCard({ title, desc, image, index }) {
       </div>
       <div className="text-xl font-bold mt-2 mx-2">{title}</div>
       <div className="mt-2 mx-2">{desc}</div>
-      <button className={`absolute bottom-0 right-0 m-4 px-4 py-2 rounded-full ${colors[index % colors.length]}`}>
-        {/* index를 배열의 길이로 나누어 나머지 값을 출력 */}
-        View
-      </button>
+      <Link to={`/Portfolio/${index + 1}`}>
+        <button
+          className={`absolute bottom-0 right-0 m-4 px-4 py-2 rounded-full ${
+            colors[index % colors.length]
+          }`}
+        >
+          {/* index를 배열의 길이로 나누어 나머지 값을 출력 */}
+          View
+        </button>
+      </Link>
     </li>
   );
 }
